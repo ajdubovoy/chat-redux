@@ -35,4 +35,9 @@ export function addMessage(channel, author, content) {
     },
     body: JSON.stringify(body)
   }).then(r => r.json());
+
+  return {
+    type: ADD_MESSAGE,
+    payload: { author, content, created_at: new Date() }
+  };
 }
