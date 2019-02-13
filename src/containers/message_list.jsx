@@ -1,5 +1,9 @@
 import React from 'react';
 
 const MessageList = (props) => {
-  return();
+  return(
+  <div></div>
+  );
 }
+
+export default MessageList;

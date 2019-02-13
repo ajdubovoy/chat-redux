@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageList from './containers/message_list.jsx';
+import MessageList from '../containers/message_list';
 
 const App = () => {
   return (
