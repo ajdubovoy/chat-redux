@@ -17,8 +17,8 @@ class MessageForm extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
     addMessage(this.props.selectedChannel, this.props.currentUser, this.state.value);
+    event.preventDefault();
   }
 
   render() {
@@ -37,7 +37,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     { addMessage },
     dispatch
-  )
+  );
 }
 
 function mapStatetoProps(state) {

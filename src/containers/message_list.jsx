@@ -8,6 +8,18 @@ import { loadMessages } from '../actions';
 class MessageList extends Component {
   componentWillMount() {
     this.props.loadMessages(this.props.selectedChannel);
+
+    const interval = window.setInterval((event) => {
+        this.props.loadMessages(this.props.selectedChannel);
+    }, 5000);
+
+    this.setState(
+      { interval }
+    );
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.state.interval);
   }
 
   render() {
