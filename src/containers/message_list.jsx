@@ -7,7 +7,12 @@ class MessageList extends Component {
   render() {
     return (
       <div className="message-list">
-        {this.props.messages.map(message => <Message message={message} key={message.created_at} />)}
+        <div className="selected-channel">
+          Channel #{this.props.selectedChannel}
+        </div>
+        <div className="messages">
+          {this.props.messages.map(message => <Message message={message} key={message.created_at} />)}
+        </div>
       </div>
     );
   }
@@ -16,6 +21,7 @@ class MessageList extends Component {
 function mapStatetoProps(state) {
   return {
     messages: state.messages,
+    selectedChannel: state.selectedChannel
   };
 }
 
