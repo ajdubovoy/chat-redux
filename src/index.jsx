@@ -22,6 +22,8 @@ const reducers = combineReducers({
   currentUser: currentUserReducer
 });
 
+const middleWares = applyMiddleware(logger, reduxPromise);
+
 const initialState = {
   messages: [
     {
@@ -40,11 +42,12 @@ const initialState = {
   currentUser: prompt('What is your username?')
 };
 
-const middleWares = applyMiddleware(logger, reduxPromise);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, initialState, composeEnhancers(middleWares));
 
 // render an instance of the component in the DOM
 ReactDOM.render(
-  <Provider store={createStore(reducers, initialState, middleWares)}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
