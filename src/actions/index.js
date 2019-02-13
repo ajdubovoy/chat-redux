@@ -34,10 +34,19 @@ export function addMessage(channel, author, content) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
-  }).then(r => r.json());
+  }).then((r) => {
+    return r.json();
+  });
 
-  return {
-    type: ADD_MESSAGE,
-    payload: { author, content, created_at: new Date() }
-  };
+  if (promise.isResolved) {
+    return {
+      type: ADD_MESSAGE,
+      payload: { author, content, created_at: new Date() }
+    };
+  } else {
+    return {
+      type: ADD_MESSAGE_FAILED,
+      payload: { author, content, created_at: new Date() }
+    };
+  }
 }
